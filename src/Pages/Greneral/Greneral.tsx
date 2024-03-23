@@ -8,14 +8,14 @@ const Greneral = () => {
 
   const { GeneralData, setGeneralData } = useHome();
   const handleChangeValue = (value: any, label: any) => {
-    setGeneralData((prevGeneralData: any) => {
-      return prevGeneralData.map((item: any) => {
-        if (item.label === label) {
-          return { ...item, value: value };
-        }
-        return item;
-      });
-    });
+    // setGeneralData((prevGeneralData: any) => {
+    //   return prevGeneralData.map((item: any) => {
+    //     if (item.label === label) {
+    //       return { ...item, value: value };
+    //     }
+    //     return item;
+    //   });
+    // });
   };
   return (
     <Card>
