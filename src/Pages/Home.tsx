@@ -10,7 +10,7 @@ export default function Home() {
     <HomeProvider>
       <Page fullWidth>
         <Text as="h1" variant="bodyMd">
-          Create volume disconunt 111
+          Create volume disconunt 11
         </Text>
         <Grid>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
