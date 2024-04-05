@@ -10,7 +10,7 @@ pipeline {
         agent {
             node {
                 label "build"
-                customWorkspace "/home/jenkins/build"
+                customWorkspace "/var/lib/jenkins"
                 }
             }
         environment {
@@ -18,8 +18,9 @@ pipeline {
         }
          steps {
             sh "docker build . -t  discount-campaign-builder-$ENV:latest --build-arg BUILD_ENV=$ENV -f Dockerfile"
-
-
+            sh 'npm prune'
+            sh 'npm install'
+            sh 'npm test'
             sh "cat docker.txt | docker login -u tuannva020699 --password-stdin"
             // tag docker image
             sh "docker tag discount-campaign-builder-$ENV:latest tuannva020699/discount-campaign-builder:$TAG"
@@ -36,8 +37,8 @@ pipeline {
 	  stage ("Deploy ") {
 	    agent {
         node {
-            label "build"
-                customWorkspace "/home/jenkins/build-$ENV/"
+            label "deploy"
+                customWorkspace "/var/lib/jenkins/-$ENV/"
             }
         }
         environment {
